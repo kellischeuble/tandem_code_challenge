@@ -50,9 +50,11 @@ def check_answer(answer, answer_dict, question):
         print("You got it incorrect! :(")
         return False
 
-def ask_if_ready():
-    return True
-    ready = input("Are you ready to play some Trivia? y/n ").lower().strip()
+def ask_if_ready(stage_of_game):
+    if stage_of_game == "beginning":
+        ready = input("Are you ready to play some Trivia? y/n ").lower().strip()
+    elif stage_of_game == "end_of_question":
+        ready = input("\nAre you ready for the next question? y/n ").lower().strip()
     if ready == 'y':
         return True
     elif ready == 'n':
@@ -65,7 +67,7 @@ def ask_if_ready():
 
 def play():
 
-    if ask_if_ready():
+    if ask_if_ready("beginning"):
         round = 1
         current_score = 0
    
@@ -78,13 +80,9 @@ def play():
             if check_answer(answer, answer_dict, question):
                 current_score += 1
             if round < 10:
-                next = input("\n Are you ready for the next question? y/n ").strip().lower()
-            if next == 'y':
-                round += 1
-                continue
-            else:
-                "Run to play again!"
-                break
+                if ask_if_ready("end_of_question"):
+                    round += 1
+                else: break
 
         print(f"\nYour final score is: {current_score}")
 
