@@ -17,10 +17,9 @@ def display_possible_answers(question):
     random.shuffle(answers)
     answer_dict = {}
     for i, answer in enumerate(answers):
-        answer_dict[str(i)] = answer
+        answer_dict[str(i + 1)] = answer
         print(f"{i + 1}: {answer}\n")
-    return answer_dict
-        
+    return answer_dict     
 
 def ask_question(questions, round):
     """
@@ -42,18 +41,14 @@ def check_answer(answer, answer_dict, question):
     Checks answer
     Returns True if answer is correct
     """
-    print(f"The answer is {question['answer']}")
-    if answer_dict[answer] == question['answer']:
+    print(f"\nThe answer is:  {question['correct']}")
+
+    if answer_dict[answer] == question['correct']:
         print("You got it correct! :)")
+        return True
     else:
         print("You got it incorrect! :(")
-    
-def display_correct_answer(question, correct):
-    """
-    Prints out question
-    Prints out correct answer
-    Prints out messages saying if they got it correct
-    """
+        return False
 
 def ask_if_ready():
     return True
@@ -72,18 +67,26 @@ def play():
 
     if ask_if_ready():
         round = 1
+        current_score = 0
    
         questions = original_questions.copy()
         reset_questions(questions)
 
         while round <= 10:
 
-            question, answer, answer_dict = ask_question(questions, round)
-            check_answer(answer, answer_dict, question)
+            answer, answer_dict, question, = ask_question(questions, round)
+            if check_answer(answer, answer_dict, question):
+                current_score += 1
+            if round < 10:
+                next = input("\n Are you ready for the next question? y/n ").strip().lower()
+            if next == 'y':
+                round += 1
+                continue
+            else:
+                "Run to play again!"
+                break
 
-
-
-            round += 1
+        print(f"\nYour final score is: {current_score}")
 
 play()
 
