@@ -86,7 +86,8 @@ def play():
 
         print(f"\nYour final score is: {current_score}")
 
-play()
+if __name__ == __main__:
+    play()
 
 
 
