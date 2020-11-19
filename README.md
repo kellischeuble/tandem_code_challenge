@@ -1,13 +1,8 @@
-# tandem_code_challenge
+# trivia app
 
 `Goal`
 
-Your goal is to create an application that displays trivia questions with multiple-choice answers to select from.
-Use creative license in terms of how you want us to see this game. At minimum, the player can view the question(s), the answer choices, the correct answer upon submission, and their score. It could be a user interface (UI), command-line-tool, etc. Feel free to use whatever framework or language you are comfortable with.
-
-
-We would also like to see a README which includes any information about how to run the code, any known issues or complexity we should look out for, and any additional features you would like to have added to make your trivia app even more awesome.
-
+Create an application that displays trivia questions with multiple-choice answers to select from.
 
 `Assumptions`
 
